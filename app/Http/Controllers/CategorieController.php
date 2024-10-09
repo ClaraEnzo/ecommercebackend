@@ -8,6 +8,7 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class CategorieController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      */
@@ -20,6 +21,7 @@ class CategorieController extends Controller
         }catch(\Exception $e){
             return response()->json("impossible d'afficher la liste des categories");
     }
+}
     
 
     /**
@@ -35,7 +37,7 @@ class CategorieController extends Controller
             "imagecategorie"=>$request -> input("imagecategorie")]);
         $categorie->save();
         return response()-> json($categorie);
-    }catch(\Throwable $th)
+    }catch(\Throwable $th){}
     }
 
 
@@ -74,7 +76,7 @@ class CategorieController extends Controller
     {
         try {
             $categorie=Categorie::findOrFail($id);
-            $categorie-delete();
+            $categorie->delete();
             return response()->json("Categorie supprimee avec succes");
         } catch (\Exception $e) {
             return response()->json("Supprimer impossible");
