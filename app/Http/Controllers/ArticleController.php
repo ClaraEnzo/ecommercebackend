@@ -13,12 +13,15 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        try {
-            $article=Article::with("scategorie")->get();
-            return response()->json($article);
-        } catch (\Exception $e) {
-            return response()->json($e->getMessage(),$e->getCode());
-        }
+        //try {
+        //    $article=Article::with("scategorie")->get();
+        //    return response()->json($article);
+      //  } catch (\Exception $e) {
+//return response()->json($e->getMessage(),$e->getCode());
+//}
+
+$article = Article::all();
+return response()->json($article);
     }
 
     /**
